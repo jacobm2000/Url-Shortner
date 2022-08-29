@@ -1,5 +1,20 @@
-.mid{
+
+#topTxt{
     
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size:3rem;
+   
+}
+body{
+    background-color:rgb(212, 193, 167);
+}
+.mid{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: 100%;
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bolder;
+    font-size: x-large;
     align-items: center;
     text-align: center;
 }

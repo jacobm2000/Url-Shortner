@@ -1,15 +1,8 @@
 var urlInput=document.getElementById('urlInput')
 var submit=document.getElementById('btn')
-function isValidUrl(_string){
-    const matchPattern =/^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/
-    return matchPattern.test(_string);
-  }
+
 submit.addEventListener("click",function(){
-    if(!isValidUrl(urlInput.value)){
-        alert("Url is not Valid please enter a valid url")
-    
-    }
-    else{
+   
 
     
         const encodedParams = new URLSearchParams();
@@ -18,7 +11,7 @@ submit.addEventListener("click",function(){
         
         
         
-        
+
         const options = {
             method: 'POST',
             headers: {
@@ -32,14 +25,20 @@ submit.addEventListener("click",function(){
         fetch('https://url-shortener-service.p.rapidapi.com/shorten', options)
         
         .then(response => response.json())
-        .then(response => output.textContent=response['result_url'])
-        .catch(err =>alert("Error: Try again"))
+        .then(response => {output.textContent=response['result_url']
     
-
-
+        /* this line will check to see if output was set to value and if it is not then it asssumed the url is not actually a shortenable url */
+            if(output.textContent==""){
+                alert("could not shorten. Try again")
+            }
+    
+            }
+        )
+        .catch(err =>alert("Error: Try again"))
+ 
         
     
-    }
+    urlInput.value=""
 }
 )
 
